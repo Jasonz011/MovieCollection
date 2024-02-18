@@ -42,12 +42,12 @@ public class MovieCollection {
     }
 
     public void searchTitles() {
-        System.out.println("Enter a title search term: ");
-        String term = scanner.nextLine();
+        System.out.print("Enter a title search term: ");
+        String term = scanner.nextLine().toLowerCase();
         ArrayList<Movie> theseMovies = new ArrayList<>();
         for (int i = 1; i<movies.size(); i++) {
             String title = movies.get(i).getTitle();
-            if (title.contains(term)) {
+            if (title.toLowerCase().contains(term)) {
                 theseMovies.add(movies.get(i));
             }
         }
@@ -58,17 +58,17 @@ public class MovieCollection {
             // similar to other code segment
             for (int i = 0; i < theseMovies.size(); i++) {
                 System.out.println(i + 1 + ". " + theseMovies.get(i).getTitle());
-                System.out.println("Which movie would you like to learn more about?");
-                System.out.print("Enter number: ");
-                int num = scanner.nextInt() - 1;
-                scanner.nextLine();
-                System.out.println("Title: " + theseMovies.get(num).getTitle());
-                System.out.println("Runtime: " + theseMovies.get(num).getRuntime());
-                System.out.println("Directed by: " + theseMovies.get(num).getDirector());
-                System.out.println("Cast: " + theseMovies.get(num).getCast());
-                System.out.println("Overview: " + theseMovies.get(num).getOverview());
-                System.out.println("User rating: " + theseMovies.get(num).getUserRating());
             }
+            System.out.println("Which movie would you like to learn more about?");
+            System.out.print("Enter number: ");
+            int num = scanner.nextInt() - 1;
+            scanner.nextLine();
+            System.out.println("Title: " + theseMovies.get(num).getTitle());
+            System.out.println("Runtime: " + theseMovies.get(num).getRuntime());
+            System.out.println("Directed by: " + theseMovies.get(num).getDirector());
+            System.out.println("Cast: " + theseMovies.get(num).getCast());
+            System.out.println("Overview: " + theseMovies.get(num).getOverview());
+            System.out.println("User rating: " + theseMovies.get(num).getUserRating());
         }
     }
 
@@ -98,9 +98,9 @@ public class MovieCollection {
             for (int i = 0; i<actorNames.size(); i++) {
                 System.out.println(i+1 + ". " + actorNames.get(i));
             }
-            System.out.println("Which would you liek to see all movies for?");
+            System.out.println("Which would you like to see all movies for?");
             System.out.print("Enter number: ");
-            String actor = actorNames.get(scanner.nextInt());
+            String actor = actorNames.get(scanner.nextInt()-1);
             scanner.nextLine();
             ArrayList<Movie> actorsMovies = new ArrayList<>();
             for (int i = 1; i<movies.size(); i++) {
@@ -113,17 +113,17 @@ public class MovieCollection {
             // similar to other code segment
             for (int i = 0; i < actorsMovies.size(); i++) {
                 System.out.println(i + 1 + ". " + actorsMovies.get(i).getTitle());
-                System.out.println("Which movie would you like to learn more about?");
-                System.out.print("Enter number: ");
-                int num = scanner.nextInt() - 1;
-                scanner.nextLine();
-                System.out.println("Title: " + actorsMovies.get(num).getTitle());
-                System.out.println("Runtime: " + actorsMovies.get(num).getRuntime());
-                System.out.println("Directed by: " + actorsMovies.get(num).getDirector());
-                System.out.println("Cast: " + actorsMovies.get(num).getCast());
-                System.out.println("Overview: " + actorsMovies.get(num).getOverview());
-                System.out.println("User rating: " + actorsMovies.get(num).getUserRating());
             }
+            System.out.println("Which movie would you like to learn more about?");
+            System.out.print("Enter number: ");
+            int num = scanner.nextInt() - 1;
+            scanner.nextLine();
+            System.out.println("Title: " + actorsMovies.get(num).getTitle());
+            System.out.println("Runtime: " + actorsMovies.get(num).getRuntime());
+            System.out.println("Directed by: " + actorsMovies.get(num).getDirector());
+            System.out.println("Cast: " + actorsMovies.get(num).getCast());
+            System.out.println("Overview: " + actorsMovies.get(num).getOverview());
+            System.out.println("User rating: " + actorsMovies.get(num).getUserRating());
         }
 
 
@@ -156,7 +156,7 @@ public class MovieCollection {
             String director = movieInfo[2];
             String overview = movieInfo[3];
             int runtime = Integer.parseInt(movieInfo[4]);
-            int userRating = Integer.parseInt(movieInfo[5]);
+            double userRating = Double.parseDouble(movieInfo[5]);
             Movie movie = new Movie(title, cast, director, overview, runtime, userRating);
             movies.add(movie);
         }
